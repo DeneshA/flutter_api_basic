@@ -1,7 +1,8 @@
 import 'package:flutter_api_project/model/user_dob.dart';
 import 'package:flutter_api_project/model/user_location.dart';
 import 'package:flutter_api_project/model/user_name.dart';
-import 'user_name.dart';
+import 'package:flutter_api_project/model/user_picture.dart';
+
 
 class User {
   final String gender;
@@ -12,6 +13,7 @@ class User {
   final UserName name;
   final UserDob dob;
   final UserLocation location;
+  final UserPicture picture;
   User(
       {required this.gender,
       required this.email,
@@ -20,7 +22,8 @@ class User {
       required this.nat,
       required this.name,
       required this.dob,
-        required this.location
+        required this.location,
+        required this.picture
       });
 //factory constructor will help us in the parsing the data
   factory User.fromMap(Map<String,dynamic> e ){
@@ -48,7 +51,12 @@ class User {
         postcode: e['location']['postcode'].toString(),
         coordinates: coordinates,
         timezone: timezone);
+final picture = UserPicture(
+    large: e['picture']['large'],
+    medium: e['picture']['medium'],
+    thumbnail: e['picture']['thumbnail']
 
+);
     return User(
         gender: e['gender'],
         email: e['email'],
@@ -57,7 +65,9 @@ class User {
         nat: e['nat'],
         name: name,
         dob: dob,
-        location: location);
+        location: location,
+      picture: picture
+    );
 
   }
 

@@ -25,7 +25,7 @@ fetchUser();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: const Text('REST API Call')),
+        title: const Center(child:  Text('REST API Call')),
         backgroundColor: Colors.grey.shade300,
       ),
       body: ListView.builder(
@@ -33,9 +33,12 @@ fetchUser();
           itemBuilder: (context, index) {
             final user = users[index];
 
-            final email = user.email;
+            // final email = user.email;
 
             return ListTile(
+              leading: ClipRRect(
+                borderRadius:BorderRadius.circular(100),
+                  child:Image.network(user.picture.large) ,),
               title: Text(user.fullName),
               subtitle: Text(user.phone),
               trailing: Text(user.location.city),
