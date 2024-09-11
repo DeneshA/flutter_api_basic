@@ -36,8 +36,9 @@ fetchUser();
             final email = user.email;
 
             return ListTile(
-              title: Text(user.name.first),
+              title: Text(user.fullName),
               subtitle: Text(user.phone),
+              trailing: Text(user.location.city),
             );
           }),
 
